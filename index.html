@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="game-info">
+                <h1>Javascript memory</h1><br>
+                <p>Verlopen tijd: <span id="timer">64 seconden.</span></p>
+                <p>Gevonden kaart-paren: <span id="pairs">1</span></p>
+                <p>Resterende toontijd: <span id="moves">0</span></p>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <div class="game-board">
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile matched"><span class="symbol">E</span></div>
+                <div class="tile matched"><span class="symbol">E</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile open"><span class="symbol">M</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+                <div class="tile closed"><span class="symbol">*</span></div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="option" id="option1">
+                <h4>Top vijf</h4>
+                <ol>
+                    <li>Barack Obama : 200</li>
+                    <li>Bernie Sanders : 300</li>
+                    <li>Hillary Clinton : 400</li>
+                    <li>Donald Trump : 500</li>
+                    <li>Jeb Bush : 600</li>
+                </ol>
+            </div>
+            <div class="option" id="option2">
+                <h4>Gemiddelde speeltijd: </h4>
+                <p>0s (64s)</p>
+            </div>
+            <div class="option" id="option3">
+                <h4>Karakter op kaarten: </h4>
+                <select name="board-characters" id="board-characters">
+                    <option value="*">*</option>
+                    <option value="-">-</option>
+                    <option value="#">#</option>
+                    <option value="&">&</option>
+                </select>
+            </div>
+            <div class="option" id="option4">
+                <h4>Afmeting bord: </h4>
+                <select name="board-size" id="board-size">
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="color-selector">
+                <button class="color-btn">Kaartkleur</button>
+                <div class="color-bar" style="background-color: #45f14b;"></div>
+              </div>
+              <div class="color-selector">
+                <button class="color-btn">Open</button>
+                <div class="color-bar" style="background-color: #13661e;"></div>
+              </div>
+              <div class="color-selector">
+                <button class="color-btn">Gevonden</button>
+                <div class="color-bar" style="background-color: #80127a;"></div>
+              </div>
+            <br>
+            <br>
+            <br>
+            <div class="color-selector">
+                <button class="color-btn">Nieuw Spel</button>
+              </div>
+        </div>
+    </div>
+    
+</body>
+</html>

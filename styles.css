@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1200px;
+    height: auto;  
+}
+
+
+.left-side {
+    flex: 2; 
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.game-info {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.game-info h1 {
+    font-size: 1.6em;
+    color: #333;
+}
+
+.game-info p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+.progress-bar {
+    width: 40%; /* Width of the bar */
+    height: 30px; /* Height of the bar */
+    background-color: #f0f0f0; /* Light gray background for the bar */
+    border: 4px solid #ccc; /* Gray border around the bar */
+    border-radius: 0px; /* Rounded corners for the container */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    overflow: hidden; /* Clip the inner bar to the container */
+    margin: 5px auto 0; /* Center the bar and add spacing above */
+  }
+  
+  .progress {
+    width: 100%; /* Full width (filled progress) */
+    height: 100%; /* Matches the height of the container */
+    background-color: rgb(41, 170, 41); /* Green color for the filled bar */
+    border-radius: 0px; /* Rounded corners for the inner bar */
+  }
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+    gap: 3px; 
+    width: 95%; 
+    max-width: 600px;
+    height: 520px; 
+    max-height: 600px;
+    margin: 0 auto; 
+    padding: 10px; 
+    border-radius: 8px;
+    position: relative;
+    aspect-ratio: 1;
+  }
+
+  .tile {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 0; /* Sharp corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+  }
+
+  .symbol {
+    display: none; /* Hide symbols initially, for the closed tiles */
+  }
+
+  .tile.closed {
+    background-color: #24ee2b; /* Green color */
+    color: transparent;
+  }
+
+  .tile.closed .symbol {
+    display: block; /* Show the '*' symbol */
+    color: white;
+  }
+
+  .tile.open {
+    background-color: #388E3C; /* Darker green */
+    color: white;
+  }
+  
+  .tile.open .symbol {
+    display: block; /* Show the letter 'M' */
+  }
+  
+  /* Matched State */
+  .tile.matched {
+    background-color: #9C27B0; /* Purple color */
+    color: white;
+  }
+  
+  .tile.matched .symbol {
+    display: block; /* Show the letter 'E' */
+  }
+
+.right-side {
+    flex: 1; 
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.option {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.option h3 {
+    font-size: 1.3em;
+    color: #333;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; 
+        height: 80vh;  
+    }
+
+    .left-side,
+    .right-side {
+        width: 100%;
+        margin-left: 20px;
+    }
+
+    .game-board {
+        grid-template-columns: repeat(6, 1fr); 
+    }
+}
+
+.color-btn {
+    width: 120px;
+  }
+
+.color-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Space between button and the color bar */
+}
+
+.color-bar {
+  width: 140px; /* Width of the color bar */
+  height: 20px; /* Height of the color bar */
+  border-radius: 5px; /* Rounded corners on the color bar */
+  border: 1px solid #ccc; /* Light border around the bar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for a subtle effect */
+}
