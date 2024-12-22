@@ -21,7 +21,6 @@ body {
     height: auto;  
 }
 
-
 .left-side {
     flex: 2; 
     background-color: #fff;
@@ -49,27 +48,25 @@ body {
 }
 
 .progress-bar {
-    width: 40%; /* Width of the bar */
-    height: 30px; /* Height of the bar */
-    background-color: #f0f0f0; /* Light gray background for the bar */
-    border: 4px solid #ccc; /* Gray border around the bar */
-    border-radius: 0px; /* Rounded corners for the container */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    overflow: hidden; /* Clip the inner bar to the container */
-    margin: 5px auto 0; /* Center the bar and add spacing above */
+    width: 40%; 
+    height: 30px;
+    background-color: #f0f0f0; 
+    border: 4px solid #ccc; 
+    border-radius: 0px; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+    overflow: hidden; 
+    margin: 5px auto 0; 
   }
   
   .progress {
-    width: 100%; /* Full width (filled progress) */
-    height: 100%; /* Matches the height of the container */
-    background-color: rgb(41, 170, 41); /* Green color for the filled bar */
-    border-radius: 0px; /* Rounded corners for the inner bar */
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(41, 170, 41); 
+    border-radius: 0px; 
   }
 
 .game-board {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-rows: repeat(6, minmax(0, 1fr));
     gap: 3px; 
     width: 95%; 
     max-width: 600px;
@@ -79,7 +76,6 @@ body {
     padding: 10px; 
     border-radius: 8px;
     position: relative;
-    aspect-ratio: 1;
   }
 
   .tile {
@@ -91,42 +87,54 @@ body {
     font-size: 1em;
     font-weight: bold;
     border: 2px solid #ccc;
-    border-radius: 0; /* Sharp corners */
+    border-radius: 0; 
     transition: background-color 0.3s ease, color 0.3s ease;
-
+    aspect-ratio: 1/1;
   }
 
-  .symbol {
-    display: none; /* Hide symbols initially, for the closed tiles */
+  .tile span {
+    user-select: none;
   }
 
   .tile.closed {
-    background-color: #24ee2b; /* Green color */
-    color: transparent;
+    background-color: #24ee2b; 
+    color: white;
   }
 
   .tile.closed .symbol {
-    display: block; /* Show the '*' symbol */
+    display: block; 
     color: white;
   }
 
   .tile.open {
-    background-color: #388E3C; /* Darker green */
+    background-color: #388E3C; 
     color: white;
   }
   
   .tile.open .symbol {
-    display: block; /* Show the letter 'M' */
+    display: block; 
   }
   
-  /* Matched State */
+  .tile img {
+    display: none; /* Hide all images by default */
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    margin: auto;
+  }
+  
+  .tile img.tile-image {
+    display: block; /* Show the image only when the tile has the tile-image class */
+  }
+  
+  
   .tile.matched {
-    background-color: #9C27B0; /* Purple color */
+    background-color: #9C27B0; 
     color: white;
   }
   
   .tile.matched .symbol {
-    display: block; /* Show the letter 'E' */
+    display: block; 
   }
 
 .right-side {
@@ -134,7 +142,6 @@ body {
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
-    margin-top: 20px;
 }
 
 .option {
@@ -151,13 +158,13 @@ body {
 @media (min-width: 768px) {
     .container {
         flex-direction: row; 
-        height: 80vh;  
+        height: auto;  
     }
 
     .left-side,
     .right-side {
-        width: 100%;
-        margin-left: 20px;
+        width: 50%;
+        margin-left: 0px;
     }
 
     .game-board {
@@ -172,13 +179,63 @@ body {
 .color-selector {
   display: flex;
   align-items: center;
-  gap: 5px; /* Space between button and the color bar */
+  gap: 5px; 
 }
 
 .color-bar {
-  width: 140px; /* Width of the color bar */
-  height: 20px; /* Height of the color bar */
-  border-radius: 5px; /* Rounded corners on the color bar */
-  border: 1px solid #ccc; /* Light border around the bar */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow for a subtle effect */
+  width: 140px; 
+  height: 20px; 
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
+
+.win-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above all other elements */
+}
+
+.win-screen.hidden {
+  display: none; /* Hide the win screen initially */
+}
+
+.win-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.win-content h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.new-game-btn:hover {
+  background-color: #2e7d32;
+}
+
+/* Add a fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+

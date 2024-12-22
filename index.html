@@ -4,61 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
         <div class="left-side">
             <div class="game-info">
                 <h1>Javascript memory</h1><br>
-                <p>Verlopen tijd: <span id="timer">64 seconden.</span></p>
-                <p>Gevonden kaart-paren: <span id="pairs">1</span></p>
-                <p>Resterende toontijd: <span id="moves">0</span></p>
+                <p>Verlopen tijd: <span id="timer">00:00</span></p>
+                <p>Gevonden kaart-paren: <span id="pairs">0</span></p>
+                <p>Resterende toontijd: <span id="moves"></span></p>
                 <div class="progress-bar">
                     <div class="progress"></div>
                 </div>
             </div>
-            <div class="game-board">
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile matched"><span class="symbol">E</span></div>
-                <div class="tile matched"><span class="symbol">E</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile open"><span class="symbol">M</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
-                <div class="tile closed"><span class="symbol">*</span></div>
+            <div class="game-board" id="game-board">
             </div>
         </div>
         <div class="right-side">
-            <div class="option" id="option1">
+            <div class="leaderboard" id="leaderboard">
                 <h4>Top vijf</h4>
                 <ol>
                     <li>Barack Obama : 200</li>
@@ -68,31 +32,41 @@
                     <li>Jeb Bush : 600</li>
                 </ol>
             </div>
-            <div class="option" id="option2">
+            <br>
+            <div class="playtime" id="playtime">
                 <h4>Gemiddelde speeltijd: </h4>
                 <p>0s (64s)</p>
             </div>
-            <div class="option" id="option3">
-                <h4>Karakter op kaarten: </h4>
+            <br>
+            <div class="card-character" id="card-character">
+                <h4>Karakter op dichte kaarten: </h4>
                 <select name="board-characters" id="board-characters">
-                    <option value="*">*</option>
+                    <option value="*" selected>*</option>
                     <option value="-">-</option>
                     <option value="#">#</option>
                     <option value="&">&</option>
                 </select>
             </div>
-            <div class="option" id="option4">
-                <h4>Afmeting bord: </h4>
-                <select name="board-size" id="board-size">
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+            <br>
+            <div class="play-characters" id="play-characters">
+                <h4>Wat staat op de kaarten: </h4>
+                <select name="play-character" id="play-character">
+                    <option value="alpha" selected>Letters</option>
+                    <option value="pictures">Plaatjes</option>
+                    <option value="dogs">Honden</option>
+                    <option value="cats">Katten</option>
                 </select>
             </div>
+            <br>
+            <div class="size-option" id="size-option">
+                <h4>Afmeting bord: </h4>
+                <select name="board-size" id="board-size">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6" selected>6</option>
+                </select>
+            </div>
+            <br>
             <div class="color-selector">
                 <button class="color-btn">Kaartkleur</button>
                 <div class="color-bar" style="background-color: #45f14b;"></div>
@@ -109,10 +83,20 @@
             <br>
             <br>
             <div class="color-selector">
-                <button class="color-btn">Nieuw Spel</button>
+                <button class="new-game-btn" button id="new-game-btn1">Nieuw Spel</button>
+            </div>
+            <br>
+            <br>
+            <div id="win-screen" class="win-screen hidden">
+                <div class="win-content">
+                  <h1>Je hebt het spel gewonnen!</h1>
+                    <p>Verlopen tijd: <span id="win-time"></span></p>
+                  <br>
+                  <button class="new-game-btn" button id="new-game-btn2">Nieuw Spel</button>
+                </div>
               </div>
         </div>
     </div>
-    
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
