@@ -115,7 +115,19 @@ body {
     display: block; 
   }
   
-
+  .tile img {
+    display: none; /* Hide all images by default */
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    margin: auto;
+  }
+  
+  .tile img.tile-image {
+    display: block; /* Show the image only when the tile has the tile-image class */
+  }
+  
+  
   .tile.matched {
     background-color: #9C27B0; 
     color: white;
@@ -225,3 +237,5 @@ body {
     transform: scale(1);
   }
 }
+
+

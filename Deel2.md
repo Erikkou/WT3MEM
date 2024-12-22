@@ -25,7 +25,7 @@ Tot nu toe had het memory spel nog geen interactie en functionaliteit: het ziet 
     XWanneer het spel voorbij is, wordt het totaal aantal seconden dat hiervoor nodig was op de één of andere manier aan de speler getoond. Later zullen we dit ook nog in de backend opslaan. Bij dit spel is het zo dat een lagere score een betere score is.
 
 
-Toevoeging voor deze week is om afbeeldingen uit externe API's te gebruiken, in plaats van letters uit het alfabet. Denk hierbij bijvoorbeeld aan:
+X Toevoeging voor deze week is om afbeeldingen uit externe API's te gebruiken, in plaats van letters uit het alfabet. Denk hierbij bijvoorbeeld aan:
 
     Lorem Picsum
 
@@ -35,9 +35,9 @@ Toevoeging voor deze week is om afbeeldingen uit externe API's te gebruiken, in 
 
 Maar andere externe api's zijn natuurlijk ook mogelijk. Voeg een keuze-optie toe waarmee de speler kan kiezen wat voor soort plaatjes hij of zij op de kaartjes wil zien:
 
-Maak gebruik van een select-box voor het selecteren van plaatjes
+X Maak gebruik van een select-box voor het selecteren van plaatjes
 
-Maak gebruik van Promise en fetch voor het ophalen van de afbeeldingen.
+X Maak gebruik van Promise en fetch voor het ophalen van de afbeeldingen.
 
 Zorg er voor dat de gesloten kaarten ook de kleur krijgen die de speler met de color picker heeft uitgezocht. Ook tijdens het spelen moet je deze kleur kunnen aanpassen.
 

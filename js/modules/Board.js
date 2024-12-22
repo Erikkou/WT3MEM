@@ -6,13 +6,13 @@ export class Board {
         this.initialize();  
     }
 
-    initialize() {
+    async initialize() {
         this.boardElement = document.getElementById('game-board');
         this.size = document.getElementById('board-size').value;
         console.log(this.size);
         this.tiles = [];
         
-        this.symbolList = this.generateSymbolList();
+        this.symbolList = await this.generateSymbolList();
         console.log(this.symbolList);
         this.createBoard();
         this.firstMove = null;
@@ -39,7 +39,7 @@ export class Board {
         }
     }
 
-    generateSymbolList() {
+    async generateSymbolList() {
         let symbolList = [];
         const symbolType = document.getElementById('play-character').value;
         console.log(symbolType);
@@ -51,17 +51,11 @@ export class Board {
         } else if (symbolType == "dogs") {
             apiUrl = "https://dog.ceo/api/breeds/image/random";
         } else if (symbolType == "cats") {
-            apiUrl = "https://cataas.com/cat?type=square";
+            apiUrl = "https://randomfox.ca/floof/";
         } 
 
         if (apiUrl) {
-            this.fetchImages(symbolType, apiUrl).then(images => {
-                symbolList = images;
-                console.log(symbolList); 
-            }).catch(err => {
-                console.error('Error fetching images', err);
-            });
-            
+            symbolList = await this.fetchImages(symbolType, apiUrl);
         } else {
             let symbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
             for (let i = 0; i < this.size * this.size / 2; i++) {
@@ -86,7 +80,9 @@ export class Board {
                     const dogData = await dogResponse.json();
                     imageUrl = dogData.message;
                 } else if (symbolType === 'cats') {
-                    imageUrl = apiUrl;
+                    const catResponse = await fetch(apiUrl);
+                    const catData = await catResponse.json();
+                    imageUrl = catData.image;
                 }
                 return imageUrl;
             })
@@ -108,11 +104,12 @@ export class Board {
         }
         if (this.firstMove && this.secondMove) {
             this.newestMove = this.tiles.find(tile => tile.isOpen && !tile.isMatched && tile !== this.firstMove && tile !== this.secondMove);
-            
             if (this.newestMove) {
-                if (!(this.firstMove.element.textContent === this.secondMove.element.textContent)) {
-                this.firstMove.resetTile();
-                this.secondMove.resetTile();
+                if (this.firstMove.element.textContent !== this.secondMove.element.textContent || 
+                    (this.firstMove.element.textContent === '' &&
+                     this.firstMove.element.querySelector('img').src !== this.secondMove.element.querySelector('img').src)) {
+                    this.firstMove.resetTile();
+                    this.secondMove.resetTile();
                 }
                 this.firstMove = this.newestMove;
                 this.secondMove = null;
@@ -120,14 +117,13 @@ export class Board {
         } else if (this.firstMove) {
             this.secondMove = this.tiles.find(tile => tile.isOpen && !tile.isMatched && tile !== this.firstMove);
             if (this.secondMove) {
-                if (this.firstMove.element.textContent === this.secondMove.element.textContent) {
+                if ((this.firstMove.element.textContent === this.secondMove.element.textContent) && (this.firstMove.element.querySelector('img').src === this.secondMove.element.querySelector('img').src)) {
                 this.firstMove.isMatched = true;
                 this.firstMove.element.classList.add('matched');
                 this.secondMove.isMatched = true;
                 this.secondMove.element.classList.add('matched');
                 this.pairsFound++
                 document.getElementById('pairs').textContent = this.pairsFound;
-                
                 }
             } 
         } else {
