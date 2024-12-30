@@ -25,7 +25,7 @@ export function showWinScreen(endTime) {
 function setupNewGameButton(gameBoard) {
   document.querySelectorAll('.new-game-btn').forEach(button => {
     button.addEventListener('click', () => {
-      console.log('New game button clicked!');
+      console.log('New game button clicked');
       const winScreen = document.getElementById('win-screen');
       winScreen.classList.add('hidden'); 
       gameBoard.resetBoard(); 
@@ -37,6 +37,6 @@ function cardCharacterChecker() {
   const cardCharacter = document.getElementById('board-characters');
 
   cardCharacter.addEventListener('change', () => {
-    console.log('New selected card character:', cardCharacter.value);
+    console.log('New card character:', cardCharacter.value);
   });
 }
