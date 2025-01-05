@@ -1,3 +1,9 @@
+
+:root {
+  --found-color: #8e44ad; 
+  --closed-color: #24ee2b; 
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +15,12 @@ body {
     background-color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
+    overflow-y: auto;
+    padding: 0;
+    width: 100%;
+    padding-top: 60px;
 }
 
 .container {
@@ -19,13 +29,15 @@ body {
     width: 90%;
     max-width: 1200px;
     height: auto;  
+    overflow: visible;
+    padding-bottom: 20px;
 }
 
 .left-side {
     flex: 2; 
     background-color: #fff;
-    padding: 15px;
     border-radius: 8px;
+    margin-bottom: 10px;
 
     display: flex;
     flex-direction: column;
@@ -69,13 +81,13 @@ body {
     display: grid;
     gap: 3px; 
     width: 95%; 
-    max-width: 600px;
-    height: 520px; 
-    max-height: 600px;
+    max-width: 800px;
+    height: auto; 
+    max-height: 800px;
     margin: 0 auto; 
-    padding: 10px; 
     border-radius: 8px;
     position: relative;
+    
   }
 
   .tile {
@@ -97,7 +109,7 @@ body {
   }
 
   .tile.closed {
-    background-color: #24ee2b; 
+    background-color: var(--closed-color); 
     color: white;
   }
 
@@ -116,7 +128,7 @@ body {
   }
   
   .tile img {
-    display: none; /* Hide all images by default */
+    display: none;
     width: 90%;
     height: 90%;
     object-fit: cover;
@@ -124,12 +136,12 @@ body {
   }
   
   .tile img.tile-image {
-    display: block; /* Show the image only when the tile has the tile-image class */
+    display: block; 
   }
   
   
   .tile.matched {
-    background-color: #9C27B0; 
+    background-color: var(--found-color); 
     color: white;
   }
   
@@ -159,6 +171,7 @@ body {
     .container {
         flex-direction: row; 
         height: auto;  
+        padding: 20px;
     }
 
     .left-side,
@@ -196,15 +209,15 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.8); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure it appears above all other elements */
+  z-index: 1000; 
 }
 
 .win-screen.hidden {
-  display: none; /* Hide the win screen initially */
+  display: none; 
 }
 
 .win-content {
@@ -222,11 +235,22 @@ body {
   margin-bottom: 20px;
 }
 
-.new-game-btn:hover {
-  background-color: #2e7d32;
+.new-game-btn {
+  background-color: #e79701;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
-/* Add a fade-in animation */
+.new-game-btn:hover {
+  background-color: #ca6411; 
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -239,3 +263,249 @@ body {
 }
 
 
+.navbar {
+  background-color: #c47602;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-size: 1.2rem;
+}
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: left;
+}
+
+.navbar-list li {
+  margin: 0 15px;
+}
+
+.navbar-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-item {
+  white-space: nowrap;
+}
+
+.navbar-list a:hover {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+
+.navbar-list a.active {
+  background-color: #2E7D32;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    font-size: 0.9rem;
+  }
+  .navbar-list {
+    text-align: center;
+  }
+
+  .navbar-list li {
+    margin: 10px 0;
+  }
+
+  .navbar-list a {
+    font-size: 1.2em;
+  }
+}
+
+.register-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.register-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4CAF50; 
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); 
+}
+
+.submit-btn {
+  background-color: #e79701;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #ca6411; 
+}
+
+@media (max-width: 600px) {
+  .register-form {
+    padding: 15px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    font-size: 14px;
+  }
+}
+
+/* Container for the alerts */
+#alert-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Base styling for the alerts */
+.alert {
+  padding: 15px;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Success alert */
+.alert-success {
+  background-color: #4CAF50;
+}
+
+/* Error alert */
+.alert-danger {
+  background-color: #f44336;
+}
+
+/* Fade-in effect */
+.alert.show {
+  opacity: 1;
+}
+
+/* Close button inside the alert */
+.alert .close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.alert .close-btn:hover {
+  color: #ccc;
+}
+
+#account-container {
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 50px;
+
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #f1f8f1;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="email"]:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #f1f8f1;
+}
+
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* This will center it */
+  background: rgba(0, 0, 0, 0.5); /* Optional background for better visibility */
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 18px;
+}

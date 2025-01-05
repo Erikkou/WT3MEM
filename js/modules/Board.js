@@ -2,9 +2,6 @@ import Tile from './Tile.js';
 import { showWinScreen } from './settings.js';
 
 export class Board {
-    constructor() {
-        this.initialize();  
-    }
 
     async initialize() {
         this.boardElement = document.getElementById('game-board');
@@ -28,7 +25,6 @@ export class Board {
 
     createBoard() {
         this.boardElement.innerHTML = '';
-        this.tiles = [];
         this.boardElement.style.gridTemplateColumns = `repeat(${this.size}, 1fr)`;
 
         for (let i = 0; i < this.size * this.size; i++) {
@@ -162,7 +158,7 @@ export class Board {
         if (allMatched) {
             clearInterval(this.timerInterval);
             this.endTime = document.getElementById('timer').textContent
-            showWinScreen(this.endTime);
+            showWinScreen(this.endTime);        
         }
     }
 
