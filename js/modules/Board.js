@@ -109,18 +109,19 @@ export class Board {
                 }
                 this.firstMove = this.newestMove;
                 this.secondMove = null;
+                this.newestMove = null;
             }
         } else if (this.firstMove) {
             this.secondMove = this.tiles.find(tile => tile.isOpen && !tile.isMatched && tile !== this.firstMove);
             if (this.secondMove) {
                 if ((this.firstMove.element.textContent === this.secondMove.element.textContent) && (this.firstMove.element.querySelector('img').src === this.secondMove.element.querySelector('img').src)) {
-                this.firstMove.isMatched = true;
-                this.firstMove.element.classList.add('matched');
-                this.secondMove.isMatched = true;
-                this.secondMove.element.classList.add('matched');
-                this.pairsFound++
-                document.getElementById('pairs').textContent = this.pairsFound;
-                }
+                    this.firstMove.isMatched = true;
+                    this.firstMove.element.classList.add('matched');
+                    this.secondMove.isMatched = true;
+                    this.secondMove.element.classList.add('matched');
+                    this.pairsFound++;
+                    document.getElementById('pairs').textContent = this.pairsFound;
+                } 
             } 
         } else {
             this.firstMove = this.tiles.find(tile => tile.isOpen && !tile.isMatched);
