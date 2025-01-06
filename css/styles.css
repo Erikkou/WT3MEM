@@ -61,6 +61,7 @@ body {
 
 .progress-bar {
     width: 40%; 
+    max-width: 200px;
     height: 30px;
     background-color: #f0f0f0; 
     border: 4px solid #ccc; 
@@ -81,9 +82,9 @@ body {
     display: grid;
     gap: 3px; 
     width: 95%; 
-    max-width: 800px;
+    max-width: 500px;
     height: auto; 
-    max-height: 800px;
+    max-height: 500px;
     margin: 0 auto; 
     border-radius: 8px;
     position: relative;
