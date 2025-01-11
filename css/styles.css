@@ -285,7 +285,6 @@ body {
   }
 }
 
-
 .navbar {
   background-color: #c47602;
   padding: 10px;
@@ -333,7 +332,6 @@ body {
   background-color: #4CAF50;
   color: #fff;
 }
-
 
 .navbar-list a.active {
   background-color: #2E7D32;
@@ -427,7 +425,6 @@ body {
   }
 }
 
-/* Container for the alerts */
 #alert-container {
   position: fixed;
   top: 20px;
@@ -439,7 +436,6 @@ body {
   margin: 0 auto;
 }
 
-/* Base styling for the alerts */
 .alert {
   padding: 15px;
   border-radius: 5px;
@@ -451,22 +447,18 @@ body {
   transition: opacity 0.5s ease;
 }
 
-/* Success alert */
 .alert-success {
   background-color: #4CAF50;
 }
 
-/* Error alert */
 .alert-danger {
   background-color: #f44336;
 }
 
-/* Fade-in effect */
 .alert.show {
   opacity: 1;
 }
 
-/* Close button inside the alert */
 .alert .close-btn {
   background: none;
   border: none;
@@ -525,10 +517,15 @@ input[type="email"]:focus {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* This will center it */
-  background: rgba(0, 0, 0, 0.5); /* Optional background for better visibility */
+  transform: translate(-50%, -50%); 
+  background: rgba(0, 0, 0, 0.5); 
   color: white;
   padding: 20px;
   border-radius: 5px;
   font-size: 18px;
+}
+
+#leaderboard {
+  list-style-position: inside; 
+  padding-left: 10px; 
 }

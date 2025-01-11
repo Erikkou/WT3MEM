@@ -126,7 +126,7 @@ async function getScores() {
 
 function sortScores(scores) {
   return scores
-  .sort((a, b) => a.score - b.score)
+  .sort((a, b) => b.score - a.score )
   .reduce((acc, score, index) => {
     if (index < 5) {
       acc.push(score);
@@ -139,9 +139,9 @@ function makeLeaderboard(scores) {
   const leaderboard = document.getElementById('leaderboard');
   leaderboard.innerHTML = '';
   scores.forEach(score => {
-    const listItem = document.createElement('li');
-    listItem.textContent = `${score.name} - ${score.score}`;
-    leaderboard.appendChild(listItem);
+      const listItem = document.createElement('li');
+      listItem.textContent = `${score.username} :  ${score.score}`;
+      leaderboard.appendChild(listItem);
   });
 }
 
