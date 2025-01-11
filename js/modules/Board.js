@@ -129,7 +129,6 @@ export class Board {
         
         console.log('First Move:', this.firstMove);
         console.log('Second Move:', this.secondMove);
-        console.log('Newest Move:', this.newestMove);
         console.log('Pairs Found:', this.pairsFound);
         this.checkGameEnd();
     }
