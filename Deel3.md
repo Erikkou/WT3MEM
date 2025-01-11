@@ -12,7 +12,7 @@ Voor dit oplevermoment moet het mogelijk zijn met een backend te communiceren. H
 
     X Maak een nieuwe pagina waarop de speler zijn of haar voorkeuren kan opgeven. Deze voorkeuren bestaan uit de favoriete plaatjes-API, de kleur voor gevonden kaartjes en de kleur voor gesloten kaarten.
 
-   X  Het moet voor de speler ook mogelijk zijn het opgegeven e-mailadres te wijzigen. Dat kun je op dezelfde pagina doen als waar de voorkeuren worden bijgehouden, of je kunt hier weer een nieuwe pagina voor maken.
+    X  Het moet voor de speler ook mogelijk zijn het opgegeven e-mailadres te wijzigen. Dat kun je op dezelfde pagina doen als waar de voorkeuren worden bijgehouden, of je kunt hier weer een nieuwe pagina voor maken.
 
     X Als de TTL van het JWT verlopen is, moet de speler een melding krijgen en naar de loginpagina verwezen worden. Tip: om dit te testen kun je de TTL in symfony aanpassen. Voeg daarvoor in config/packages/lexik_jwt_authentication.yaml een key token_ttl toe met een waarde in seconden:
 
