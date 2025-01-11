@@ -14,6 +14,7 @@ export default class Tile {
     const symbolElement = document.createElement('span');
     symbolElement.textContent = this.symbolElementSymbol;
     const imageElement = document.createElement('img');
+    imageElement.src = '';
     tile.appendChild(imageElement);
     tile.appendChild(symbolElement);
     tile.addEventListener('click', () => this.flipTile());
