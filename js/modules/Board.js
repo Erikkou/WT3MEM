@@ -21,6 +21,7 @@ export class Board {
         this.startTime = null;
         this.timerInterval = null;
         this.endTime = null;
+        this.showTimerinterval = null;
     }
 
     createBoard() {
@@ -110,6 +111,7 @@ export class Board {
                 this.firstMove = this.newestMove;
                 this.secondMove = null;
                 this.newestMove = null;
+                this.stopTimer();
             }
         } else if (this.firstMove) {
             this.secondMove = this.tiles.find(tile => tile.isOpen && !tile.isMatched && tile !== this.firstMove);
@@ -121,7 +123,9 @@ export class Board {
                     this.secondMove.element.classList.add('matched');
                     this.pairsFound++;
                     document.getElementById('pairs').textContent = this.pairsFound;
-                } 
+                } else {
+                    this.startTimer();
+                }
             } 
         } else {
             this.firstMove = this.tiles.find(tile => tile.isOpen && !tile.isMatched);
@@ -166,6 +170,49 @@ export class Board {
         clearInterval(this.timerInterval);
         this.initialize();
     }
+
+    startTimer() {
+        const chunks = Array.from(document.querySelectorAll('#timer-bar .chunk'));
+        const totalChunks = chunks.length;
+        const interval = 1000;
+      
+        if (this.showTimerinterval) {
+            this.stopTimer();
+        }
+      
+        let currentIndex = totalChunks - 1;
+      
+        this.showTimerinterval = setInterval(() => {
+            if (currentIndex >= 0) {
+                chunks[currentIndex].classList.add('hidden'); 
+                currentIndex--;
+            } else {
+                clearInterval(this.showTimerinterval); 
+                this.showTimerinterval = null;
+      
+            setTimeout(() => {
+                this.resetChunks(chunks);
+                this.firstMove.resetTile();
+                this.secondMove.resetTile();
+            }, 10); 
+          }
+        }, interval);
+      }
+      
+    stopTimer() {
+        if (this.showTimerinterval) {
+            clearInterval(this.showTimerinterval); 
+            this.showTimerinterval = null; 
+        }
+      
+        const chunks = Array.from(document.querySelectorAll('#timer-bar .chunk'));
+        this.resetChunks(chunks);
+      }
+      
+    resetChunks(chunks) {
+        chunks.forEach(chunk => chunk.classList.remove('hidden')); 
+      }
+      
 
 
 }
