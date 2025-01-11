@@ -1,6 +1,6 @@
 Memory game with Javascript
 
-Per deel is een md bestand geplaatst om bij te houden welke requirements zijn uitgewerkt. 
+Per deel is een md bestand geplaatst om bij te houden welke requirements zijn uitgewerkt. Deel 4 is een aparte repo. 
 
 Niet alles waarvoor in deel 1 onderdelen zijn aangemaakt was een vereiste in latere delen. Bijvoorbeeld de Gemiddelde Speeltijd. 
 Daarnaast is het nog niet gelukt om games aan de database toe te voegen via het create script, dus de Top Vijf is niet getest. 
